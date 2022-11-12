@@ -1,22 +1,26 @@
 package Fixed;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.concurrent.Callable;
 
-public class Fatorial implements Callable<Long>{
+public class Fatorial implements Callable<BigDecimal>{
 	private int number;
 
 	public Fatorial(int number) {
 		this.number = number;
 	}
 
-	public Long call() {
-		return fatorial(this.number);
+	public BigDecimal call() {
+		BigDecimal fat = BigDecimal.valueOf(fatorial(this.number));
+		BigDecimal ONE = BigDecimal.ONE;
+		return (ONE.divide(fat));
 	}
 
-	public long fatorial(int x) {
-        long valor = 1;
+	public int fatorial(int x) {
+		int valor = 1;
         for (int i = 1; i < x; i++) {
-        	valor = valor * i;
+        	valor += valor * i;
         }
         return valor;
     }
