@@ -29,8 +29,10 @@ public class FixedMain {
 		ExecutorService executor =
 			Executors.newFixedThreadPool(NUM_THREADS);
 		
+		//guarda os resultados em uma lista de bigdecimal chamada results
 		List<Future<BigDecimal>> results = new ArrayList<>();
 
+		//faz o calculo de cada termo e adiciona seu valor na lista de results
 		for (int i = 1; i < NUM_TERMOS; ++i) {
 			Callable<BigDecimal> calculator = new Fatorial(i);
 			Future<BigDecimal> factorial = executor.submit(calculator);
@@ -41,16 +43,18 @@ public class FixedMain {
 		try {
 			List<BigDecimal> valores = new ArrayList<>();
 
+			//pega os valores da lista de resultados e guarda em uma list
 			for (Future<BigDecimal> result : results) {
 
 				valores.add(result.get() );
 				i++;
 			}
+			//somar o número de euller
 			BigDecimal exit = BigDecimal.ZERO;
 			for (BigDecimal e : valores) {
 			exit = exit.add(e);
 			}
-			System.out.println("todas terminaram com o - valor = " + exit);
+			System.out.println("todas terminaram com o valor de euller = " + exit);
 			System.out.println("número de threads = " + (Thread.activeCount()-1));
 			System.out.println ("Número de Termos: " + NUM_TERMOS);
 		} catch (ExecutionException | InterruptedException e) {

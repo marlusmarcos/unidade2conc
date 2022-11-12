@@ -11,15 +11,18 @@ public class Fatorial implements Callable<BigDecimal>{
 	public Fatorial(int number) {
 		this.number = number;
 	}
-
+	/*
+	 * retorna o valor calculado de um termo
+	 * */
 	public BigDecimal call() {
 		BigDecimal fat = (fatorial(this.number));
-		//BigDecimal ONE = BigDecimal.ONE;
-		//System.out.println("Thread: " + Thread.currentThread().getName());
-		//System.out.println (" - valor: " + BigDecimal.valueOf(1).divide(fat, 4, RoundingMode.HALF_UP));
+
 		return (BigDecimal.valueOf(1).divide(fat, 200, RoundingMode.HALF_UP));
 	}
 
+	/*
+	 * calcula o fatorial de um termo
+	 * */
 	public BigDecimal fatorial(int x) {
 		BigDecimal valor = BigDecimal.ONE;
         for (int i = 1; i < x; i++) {
