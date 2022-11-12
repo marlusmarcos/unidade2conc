@@ -1,4 +1,4 @@
-package Fixed;
+/*package Fixed;
 
 import java.math.BigDecimal;
 import java.util.concurrent.Callable;
@@ -16,3 +16,4 @@ public class NumberEuller implements Callable<BigDecimal>{
 	public void caulcular
 
 }
+*/
